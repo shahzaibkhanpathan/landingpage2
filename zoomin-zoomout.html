@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zoom In/Out Buttons</title>
+     <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+    <style>
+        .zoom-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+        .zoomable {
+            width: 200px;
+            height: 200px;
+            transition: transform 0.3s ease;
+            margin-bottom: 150px;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="zoom-container">
+        <div class="row">
+            <div class="col-md-9">
+
+                <img id="image" src="images.jpg" alt="Zoomable Image" class="zoomable mt-5">
+            </div>
+            <div class="col-md-3">
+
+                <div class="buttons">
+                    <button onclick="zoomIn()">Zoom In</button>
+                    <button onclick="resetZoom()">Reset</button>
+                    <button onclick="zoomOut()">Zoom Out</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let scale = 1;
+
+        function zoomIn() {
+            scale += 0.2;
+            document.getElementById('image').style.transform = `scale(${scale})`;
+        }
+
+        function resetZoom() {
+            scale = 1;
+            document.getElementById('image').style.transform = `scale(${scale})`;
+        }
+
+        function zoomOut() {
+            scale -= 0.2;
+            if (scale < 0.2) scale = 0.2; 
+            document.getElementById('image').style.transform = `scale(${scale})`;
+        }
+    </script>
+</body>
+</html>
